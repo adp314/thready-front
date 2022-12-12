@@ -1,6 +1,10 @@
 import { useState } from "react";
+import style from "./style.module.css";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
+import tlogo from "../../images/tlogo.png";
+import uploadImg from "../../images/upload_img.png";
+import defaultImg from "../../images/defaultImg.jpg"
 
 export function Signup() {
   const navigate = useNavigate();
@@ -11,14 +15,15 @@ export function Signup() {
     confirmPassword: "",
   });
 
-  const [img, setImg] = useState("");
+  const [img, setImg] = useState(defaultImg);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
   function handleImage(e) {
-    setImg(e.target.files[0]);
+    console.log(e.target.files);
+        setImg(URL.createObjectURL(e.target.files[0]));
   }
 
   async function handleUpload() {
@@ -45,46 +50,74 @@ export function Signup() {
     } catch (error) {
       console.log(error);
     }
+
+
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="formName">Nome:</label>
-      <input
-        id="formName"
-        name="name"
-        type="text"
-        value={form.name}
-        onChange={handleChange}
-      />
-      <label htmlFor="formImg">Sua foto de perfil:</label>
-      <input type="file" id="formImg" onChange={handleImage} />
+    <div className={style.signupContainer}>
+    <img className={style.signupTLogo} src={tlogo} alt="t logo"/>
+    <h2 className={style.signupTitle}>Fill in your informations.</h2>
 
-      <label htmlFor="formEmail">E-mail:</label>
-      <input
-        id="formEmail"
-        name="email"
-        type="email"
-        value={form.email}
-        onChange={handleChange}
-      />
-      <label htmlFor="formPassword">Senha:</label>
-      <input
-        id="formPassword"
-        name="password"
-        type="password"
-        value={form.password}
-        onChange={handleChange}
-      />
-      <label htmlFor="formConfirmPassword">Confirmação de senha</label>
-      <input
-        id="formConfirmPassword"
-        type="password"
-        name="confirmPassword"
-        value={form.confirmPassword}
-        onChange={handleChange}
-      />
-      <button type="submit">Cadastrar</button>
-    </form>
+      <form className={style.signupForm} onSubmit={handleSubmit}>
+
+
+      <div className={style.signupInfosDiv}>
+        <label className={style.signupLabels} htmlFor="formName">Name</label>
+        <input
+          className={style.signupInputs}
+          id="formName"
+          name="name"
+          type="text"
+          value={form.name}
+          onChange={handleChange}
+        />
+
+        <label className={style.signupLabels} htmlFor="formEmail">Email</label>
+        <input
+          className={style.signupInputs}
+          id="formEmail"
+          name="email"
+          type="email"
+          value={form.email}
+          onChange={handleChange}
+        />
+
+        <label className={style.signupLabels} htmlFor="formPassword">Choose password</label>
+        <input
+          className={style.signupInputs}
+          id="formPassword"
+          name="password"
+          type="password"
+          value={form.password}
+          onChange={handleChange}
+        />
+
+        <label className={style.signupLabels} htmlFor="formConfirmPassword">Confirm password</label>
+        <input
+          className={style.signupInputs}
+          id="formConfirmPassword"
+          type="password"
+          name="confirmPassword"
+          value={form.confirmPassword}
+          onChange={handleChange}
+        />
+        <button className={style.signupButton} type="submit">Submit</button>
+        </div>
+
+        <div className={style.signupImgDiv}>
+        <label className={style.signupImgLabel} htmlFor="formImg">
+        <img className={style.uploadImg}src={uploadImg} alt="upload img"/>
+        </label>
+        <img className={style.fileImg} src={img} alt={img}/>
+        <input
+          className={style.signupImgInput}
+          type="file" 
+          id="formImg" 
+          onChange={handleImage}
+        />
+        </div>
+      </form>
+    </div>
   );
 }

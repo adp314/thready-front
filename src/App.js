@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
+import "./global.css";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { AuthContextComponent } from "./contexts/authContext";
 import { Profile } from "./pages/Profile";
 import { ErrorPage } from "./pages/ErrorPage";
-
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
