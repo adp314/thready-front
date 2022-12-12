@@ -9,9 +9,9 @@ import defaultImg from "../../images/defaultImg.jpg"
 export function Signup() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    name: "",
+    userName: "",
     email: "",
-    password: "",
+    passwordHash: "",
     confirmPassword: "",
   });
 
@@ -43,15 +43,17 @@ export function Signup() {
     e.preventDefault();
 
     try {
-      const imgURL = await handleUpload();
-      await api.post("/user/signup", { ...form, img: imgURL });
+      if(form.confirmPassword !== form.passwordHash){
+        alert('passwords não são iguais');
+        return
+      }
+
+      await api.post("/user/signup", form );
 
       navigate("/login");
     } catch (error) {
       console.log(error);
     }
-
-
   }
 
   return (
@@ -67,9 +69,9 @@ export function Signup() {
         <input
           className={style.signupInputs}
           id="formName"
-          name="name"
+          name="userName"
           type="text"
-          value={form.name}
+          value={form.userName}
           onChange={handleChange}
         />
 
@@ -87,9 +89,9 @@ export function Signup() {
         <input
           className={style.signupInputs}
           id="formPassword"
-          name="password"
+          name="passwordHash"
           type="password"
-          value={form.password}
+          value={form.passwordHash}
           onChange={handleChange}
         />
 
@@ -105,7 +107,7 @@ export function Signup() {
         <button className={style.signupButton} type="submit">Submit</button>
         </div>
 
-        <div className={style.signupImgDiv}>
+        {/* <div className={style.signupImgDiv}>
         <label className={style.signupImgLabel} htmlFor="formImg">
         <img className={style.uploadImg}src={uploadImg} alt="upload img"/>
         </label>
@@ -116,7 +118,7 @@ export function Signup() {
           id="formImg" 
           onChange={handleImage}
         />
-        </div>
+        </div> */}
       </form>
     </div>
   );
