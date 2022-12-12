@@ -11,7 +11,11 @@ export function ProtectedRoute(props) {
 
   useEffect(() => {
     console.log(parsedUser);
+<<<<<<< HEAD
     if (parsedUser) {
+=======
+    if (!parsedUser) {
+>>>>>>> 8ee0e4f6c1eed317853590078bb6db04e81cc935
       navigate("/login");
     }
   }, []);
