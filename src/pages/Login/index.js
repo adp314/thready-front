@@ -1,7 +1,10 @@
+import style from "./style.module.css";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import tlogo from "../../images/tlogo.png";
 
 export function Login() {
   const [form, setForm] = useState({
@@ -33,22 +36,28 @@ export function Login() {
   }
 
   return (
-    <form onSubmit={handleSumit}>
-      <label>Email:</label>
-      <input
-        type="email"
-        name="email"
-        value={form.email}
-        onChange={handleChange}
-      />
-      <label>Senha:</label>
-      <input
-        type="password"
-        name="password"
-        value={form.password}
-        onChange={handleChange}
-      />
-      <button type="submit">Entrar!</button>
-    </form>
+  <div className={style.loginContainer}>
+    <img className={style.loginTLogo} src={tlogo} alt="t logo"/>
+    <h2 className={style.loginTitle}>Connect to your Thready account.</h2>
+      <form className={style.loginForm} onSubmit={handleSumit}>
+        <input className={style.loginInputs}
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+        />
+        <input className={style.loginInputs}
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={handleChange}
+        />
+        <button className={style.loginButton} type="submit">Login</button>
+      </form>
+
+      <p className={style.loginSignUpText}>No Thready account ? <Link className={style.loginSignUpLink} to="/signup">Sign-up here.</Link></p>
+  </div>
   );
-}
+};

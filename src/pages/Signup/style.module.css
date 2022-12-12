@@ -1,0 +1,120 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+
+.signupContainer{
+    margin-top: 200px;
+    height: 550px;
+    width: 700px;
+    background-color: var(--primary2);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.signupTLogo{
+    width: 64px;
+    margin-bottom: 20px;
+}
+
+.signupTitle{
+    margin-bottom: 25px;
+}
+
+.signupForm {
+    display: flex;
+    flex-direction: row;
+    width: 700px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.signupInputs{
+    height: 35px;
+    width: 300px;
+    border-radius: 5px;
+    border-style: none;
+    margin-top: 5px;
+    font-size: 1rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.signupInputs[type=email],.signupInputs[type=password], .signupInputs[type=text]{
+    padding-left: 10px;
+    font-size: 1rem;
+}
+
+.signupImgInput {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+  }
+
+.signupImgLabel{
+    font-size: 1rem;
+    color: white;
+    margin-top: 5px;
+    cursor: pointer;
+    background-color: var(--primary1);
+    border-style: solid;
+    border-width: 2px;
+    text-align: center;
+    border-radius: 5px;
+    width: 50px;
+}
+
+.uploadImg{
+    width: 24px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.signupImgDiv{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.signupInfosDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.signupLabels{
+    margin-top: 15px;
+    margin-left: 5px;
+    font-size: 1rem;
+}
+
+.fileImg{
+    height: 240px;
+    width: 240px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.signupButton{
+    width: 150px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border-style: none;
+    font-size: 1.0rem;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    align-self: center;
+}
+
+.signupButton:hover{
+    background-color: var(--colory1);
+    color: var(--light);
+}
