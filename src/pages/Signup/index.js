@@ -47,7 +47,7 @@ export function Signup() {
         alert('passwords não são iguais');
         return
       }
-
+      // delete the 'confirm password' before req ???
       await api.post("/user/signup", form );
 
       navigate("/login");
