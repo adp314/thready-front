@@ -9,15 +9,9 @@ import defaultImg from "../../images/defaultImg.jpg"
 export function Signup() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-<<<<<<< HEAD
     name: "",
     email: "",
     password: "",
-=======
-    userName: "",
-    email: "",
-    passwordHash: "",
->>>>>>> 8ee0e4f6c1eed317853590078bb6db04e81cc935
     confirmPassword: "",
   });
 
@@ -49,27 +43,15 @@ export function Signup() {
     e.preventDefault();
 
     try {
-<<<<<<< HEAD
       const imgURL = await handleUpload();
       await api.post("/user/signup", { ...form, img: imgURL });
-=======
-      if(form.confirmPassword !== form.passwordHash){
-        alert('passwords não são iguais');
-        return
-      }
-      // delete the 'confirm password' before req ???
-      await api.post("/user/signup", form );
->>>>>>> 8ee0e4f6c1eed317853590078bb6db04e81cc935
 
       navigate("/login");
     } catch (error) {
       console.log(error);
     }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 8ee0e4f6c1eed317853590078bb6db04e81cc935
   }
 
   return (
@@ -85,15 +67,9 @@ export function Signup() {
         <input
           className={style.signupInputs}
           id="formName"
-<<<<<<< HEAD
           name="name"
           type="text"
           value={form.name}
-=======
-          name="userName"
-          type="text"
-          value={form.userName}
->>>>>>> 8ee0e4f6c1eed317853590078bb6db04e81cc935
           onChange={handleChange}
         />
 
@@ -111,15 +87,9 @@ export function Signup() {
         <input
           className={style.signupInputs}
           id="formPassword"
-<<<<<<< HEAD
           name="password"
           type="password"
           value={form.password}
-=======
-          name="passwordHash"
-          type="password"
-          value={form.passwordHash}
->>>>>>> 8ee0e4f6c1eed317853590078bb6db04e81cc935
           onChange={handleChange}
         />
 
@@ -135,11 +105,7 @@ export function Signup() {
         <button className={style.signupButton} type="submit">Submit</button>
         </div>
 
-<<<<<<< HEAD
         <div className={style.signupImgDiv}>
-=======
-        {/* <div className={style.signupImgDiv}>
->>>>>>> 8ee0e4f6c1eed317853590078bb6db04e81cc935
         <label className={style.signupImgLabel} htmlFor="formImg">
         <img className={style.uploadImg}src={uploadImg} alt="upload img"/>
         </label>
@@ -150,11 +116,7 @@ export function Signup() {
           id="formImg" 
           onChange={handleImage}
         />
-<<<<<<< HEAD
         </div>
-=======
-        </div> */}
->>>>>>> 8ee0e4f6c1eed317853590078bb6db04e81cc935
       </form>
     </div>
   );

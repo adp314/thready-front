@@ -21,11 +21,7 @@ export function Profile() {
 
   return (
     <>
-<<<<<<< HEAD
       <h1>{user.name}</h1>
-=======
-      <h1>{user.userName}</h1>
->>>>>>> 8ee0e4f6c1eed317853590078bb6db04e81cc935
       <p>{user.email}</p>
       <button onClick={handleLogOut}>Sair</button>
     </>
