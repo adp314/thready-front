@@ -7,7 +7,7 @@ export function ThreadCard(props){
                 <h1>{thread.title}</h1>
             </div>
             <div>
-                <p>{thread.creator}</p>
+                <p>{thread.creator.userName}</p> 
                 <p>Stars</p>
                 <p>{thread.likes}</p>
             </div>
