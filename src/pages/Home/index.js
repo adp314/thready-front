@@ -24,12 +24,12 @@ export function Home() {
 
       <div className={style.homeCentralContainer}>
         <nav className={style.containerStickyNav}>
-          <Link className={style.navHome} to="/home">Home</Link>
+          <Link className={style.stickyPictoNavHome} to="/home">Home</Link>
         </nav>
       </div>
 
       <div className={style.homeRightContainer}>
-      <h2>Most popular Tags</h2>
+      <h2 className={style.h2Tags}>Most popular <span className={style.spanTags}>Tags</span></h2>
         <div className={style.homeTopTagsContainer}></div>
         <div className={style.homeFiltertagsContainer}></div>
       </div>
