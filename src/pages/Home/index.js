@@ -1,5 +1,5 @@
 import style from "./style.module.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
@@ -8,9 +8,27 @@ import tlogo from "../../images/tlogo.png";
 import home from "../../images/home.png";
 import profileuser from "../../images/profileuser.png";
 import settings from "../../images/settings.png";
+import { ThreadCard } from "../../components/ThreadCard";
 
 
 export function Home() {
+
+  const [threadsAll, setThreads] = useState([]);
+
+  useEffect(() => {
+    async function getAllThreads(){
+      try {
+        const response = await api.get("/thread/all");
+        setThreads(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getAllThreads();
+    console.log(threadsAll);
+    console.log(threadsAll);
+  }, []);
+
   return (
     <div className={style.homeContent}>
       <div className={style.homeLeftContainer}>
@@ -26,6 +44,11 @@ export function Home() {
         <nav className={style.containerStickyNav}>
           <Link className={style.stickyPictoNavHome} to="/home">Home</Link>
         </nav>
+        
+         { threadsAll.map(element => {
+          return <ThreadCard threadObj={element} key={element._id}/>
+        })} 
+
       </div>
 
       <div className={style.homeRightContainer}>
@@ -36,3 +59,5 @@ export function Home() {
     </div>
   )
 }
+
+
