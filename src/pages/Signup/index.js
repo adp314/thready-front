@@ -9,9 +9,9 @@ import defaultImg from "../../images/defaultImg.jpg"
 export function Signup() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    userName: "",
+    name: "",
     email: "",
-    passwordHash: "",
+    password: "",
     confirmPassword: "",
   });
 
@@ -43,17 +43,15 @@ export function Signup() {
     e.preventDefault();
 
     try {
-      if(form.confirmPassword !== form.passwordHash){
-        alert('passwords não são iguais');
-        return
-      }
-      // delete the 'confirm password' before req ???
-      await api.post("/user/signup", form );
+      const imgURL = await handleUpload();
+      await api.post("/user/signup", { ...form, img: imgURL });
 
       navigate("/login");
     } catch (error) {
       console.log(error);
     }
+
+
   }
 
   return (
@@ -69,9 +67,9 @@ export function Signup() {
         <input
           className={style.signupInputs}
           id="formName"
-          name="userName"
+          name="name"
           type="text"
-          value={form.userName}
+          value={form.name}
           onChange={handleChange}
         />
 
@@ -89,9 +87,9 @@ export function Signup() {
         <input
           className={style.signupInputs}
           id="formPassword"
-          name="passwordHash"
+          name="password"
           type="password"
-          value={form.passwordHash}
+          value={form.password}
           onChange={handleChange}
         />
 
@@ -107,7 +105,7 @@ export function Signup() {
         <button className={style.signupButton} type="submit">Submit</button>
         </div>
 
-        {/* <div className={style.signupImgDiv}>
+        <div className={style.signupImgDiv}>
         <label className={style.signupImgLabel} htmlFor="formImg">
         <img className={style.uploadImg}src={uploadImg} alt="upload img"/>
         </label>
@@ -118,7 +116,7 @@ export function Signup() {
           id="formImg" 
           onChange={handleImage}
         />
-        </div> */}
+        </div>
       </form>
     </div>
   );
