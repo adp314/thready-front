@@ -1,6 +1,6 @@
 .homeContent {
     display: flex;
-    gap: 70px;
+    gap: 50px;
 }
 
 .homeTLogo{
@@ -40,6 +40,42 @@
     margin-top: 30px;
 }
 
+.homeCardProfileImg {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    box-shadow: var(--shadowBox1);
+}
+
+.homeCardLogout {
+    width: 24px;
+    
+}
+
+.profileCardLogged {
+    width: 250px;
+    height: 70px;
+    border-radius: 7px;
+    box-shadow: var(--shadowBox1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    background-color: var(--primary2);
+    gap: 10px;
+    padding: 15px;
+    margin-top: 32px;
+}
+
+.homeCardUsername {
+    font-size: 1rem;
+    color: var(--colory1);
+}
+
+.homeCardLogout {
+    cursor: pointer;
+}
+
 .homeCentralContainer {
     background-color: var(--primary2);
     height: 100vh;
@@ -58,6 +94,7 @@
 .spanTags{
     background-color: var(--primary1);
     border-radius: 7px;
+    color: var(--colory1);
 }
 
 .containerStickyNav {
@@ -70,4 +107,5 @@
     color: var(--light);
     font-size: 1.2rem;
     font-weight: 600;
+    color: var(--colory1);
 }

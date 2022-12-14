@@ -1,0 +1,28 @@
+.settingsContainer {
+    background-color: var(--primary2);
+    margin-top: 75px;
+    padding: 20px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    border-radius: 7px;
+    box-shadow: var(--shadowBox1);
+}
+
+.profileImg {
+    width: 200px;
+    align-self: center;
+}
+
+.settingsFormContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.settingsForm {
+    display: flex;
+    flex-direction: column;
+}
+

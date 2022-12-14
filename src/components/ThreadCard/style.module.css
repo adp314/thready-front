@@ -1,0 +1,69 @@
+.cardContainer {
+    width: 600px;
+    height: 300px;
+    border-radius: 8px;
+    box-shadow: var(--shadowBox1);
+    background-color: var(--primary3);
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.cardContainer:hover{
+    background-color: rgba(51, 51, 51, 0.575);
+}
+
+.cardImgBanner{
+    background-color: rgb(87, 80, 71);
+    height: 45%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardLikesPicto {
+    width: 20px;
+    padding-top: 3px;
+}
+
+.cardInfosContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardInfosUserFakeImg {
+    background-color: blue;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: var(--shadowBox1);
+}
+
+.cardInfosUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    gap: 10px;
+}
+
+.cardUsernameCreator {
+    font-weight: 600;
+    align-self:flex-end;
+}
+
+.cardInfosLikes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:7px;
+    margin: 10px;
+}
+
+.cardLikesCount{
+    font-weight: 600;
+    font-size: 1.3rem;
+    align-self: flex-end;
+}
