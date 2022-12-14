@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import tlogo from "../../images/tlogo.png";
 import home from "../../images/home.png";
 import profileuser from "../../images/profileuser.png";
+import logoutPicto from "../../images/logout.png";
 import settings from "../../images/settings.png";
 import { ThreadCard } from "../../components/ThreadCard";
 
@@ -14,6 +15,25 @@ import { ThreadCard } from "../../components/ThreadCard";
 export function Home() {
 
   const [threadsAll, setThreads] = useState([]);
+  const [user, setUser] = useState({ 
+    userName: "",
+    email: "",
+    profileImg: "",
+    });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  function isLogged(){
+    const loggedInUserJSONContent = localStorage.getItem("loggedInUser");
+    const parseLoggedInUserContent = JSON.parse(loggedInUserJSONContent || '""');
+ 
+    if (parseLoggedInUserContent.token){
+        setIsLoggedIn(true)
+    }
+    else{
+        setIsLoggedIn(false)
+    }
+   }
 
   useEffect(() => {
     async function getAllThreads(){
@@ -29,6 +49,29 @@ export function Home() {
     console.log(threadsAll);
   }, []);
 
+  function handleLogOut() {
+    localStorage.removeItem("loggedInUser");
+    navigate("/home");
+    window.location.reload(false);
+  }
+
+  useEffect(() => {
+
+    async function fetchUser() {
+
+        try{
+        const response = await api.get("/user/profile");
+        setUser(response.data);
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
+    fetchUser();
+    isLogged();
+  }, []);
+
   return (
     <div className={style.homeContent}>
       <div className={style.homeLeftContainer}>
@@ -36,8 +79,19 @@ export function Home() {
           <nav className={style.navMenu}>
             <Link className={style.navLinks} to="/home"> <img className={style.navPictos} src={home} alt="home_picto"/>Home</Link>
             <Link className={style.navLinks} to="/home"> <img className={style.navPictos} src={profileuser} alt="profileUseur_picto"/>Profile</Link>
-            <Link className={style.navLinks} to="/home"> <img className={style.navPictos} src={settings} alt="settings_picto"/>Settings</Link>
+            <Link className={style.navLinks} to="/settings"> <img className={style.navPictos} src={settings} alt="settings_picto"/>Settings</Link>
           </nav>
+
+          {isLoggedIn ? 
+          <div className={style.profileCardLogged}>
+            <img className={style.homeCardProfileImg}src={user.profileImg} alt="profile_img"/>
+            <p className={style.homeCardUsername}>{user.userName}</p>
+            <img className={style.homeCardLogout} src={logoutPicto} alt="logout_picto" onClick={handleLogOut}/>
+          </div>
+          : <div className={style.profileCardNotLogged}>
+            <p> not logged !</p>
+            </div>
+          }
       </div>
 
       <div className={style.homeCentralContainer}>

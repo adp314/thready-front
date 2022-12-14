@@ -10,7 +10,6 @@ export function Settings() {
     userName: "",
     email: "",
     profileImg: "",
-    password: "",
     });
 
   const navigate = useNavigate();
