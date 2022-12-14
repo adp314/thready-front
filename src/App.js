@@ -8,6 +8,8 @@ import { Profile } from "./pages/Profile";
 import { Settings } from "./pages/Settings";
 import { ErrorPage } from "./pages/ErrorPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { CreateThread } from "./pages/CreateThread";
+
 
 function App() {
   return (
@@ -23,7 +25,14 @@ function App() {
             path="/profile"
             element={<ProtectedRoute component={Profile} />}
           />
+
+          <Route
+            path="/create"
+            element={<ProtectedRoute component={CreateThread}/>}
+          />
+
           <Route path="/settings" element={<Settings />} />
+
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>
