@@ -8,7 +8,7 @@ export function ThreadCard(props){
     return (
         <div className={style.cardContainer}>
             <div className={style.cardImgBanner}>
-                <h2 className={style.cardTitle}>{thread.title}</h2>
+                <Link to={`/thread/${thread._id}`}><h2 className={style.cardTitle}>{thread.title}</h2></Link>
             </div>
 
             <div className={style.cardInfosContainer}>

@@ -10,7 +10,7 @@ import { ErrorPage } from "./pages/ErrorPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { CreateThread } from "./pages/CreateThread";
 import { ViewThreadsOfUser } from "./pages/ViewThreadsOfUser";
-
+import { ViewSingleThread } from "./pages/ViewSingleThread";
 
 function App() {
   return (
@@ -35,6 +35,8 @@ function App() {
           <Route path="/settings" element={<Settings />} />
 
           <Route path="view/:id" element={<ViewThreadsOfUser/>}></Route>
+
+          <Route path="thread/:id" element={<ViewSingleThread/>}></Route>
 
 
           <Route path="*" element={<ErrorPage />} />
