@@ -29,7 +29,7 @@ export function Login() {
 
       localStorage.setItem("loggedInUser", JSON.stringify(response.data));
 
-      navigate("/settings");
+      navigate("/home");
     } catch (error) {
       console.log(error);
     }
