@@ -9,15 +9,6 @@ export function CreateThread(){
 
     const navigate = useNavigate();
 
-    async function getTagsData(){
-        try{
-            await api.post("thread/create", form)
-        }
-        catch (err){
-            console.log(err);
-        }
-    }
-
     const [form, setForm] = useState({
         title: "",
         text: "",
