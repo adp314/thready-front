@@ -78,7 +78,7 @@ export function Home() {
         <img className={style.homeTLogo} src={tlogo} alt="thready_logo"/>
           <nav className={style.navMenu}>
             <Link className={style.navLinks} to="/home"> <img className={style.navPictos} src={home} alt="home_picto"/>Home</Link>
-            <Link className={style.navLinks} to="/home"> <img className={style.navPictos} src={profileuser} alt="profileUseur_picto"/>Profile</Link>
+            <Link className={style.navLinks} to="/profile"> <img className={style.navPictos} src={profileuser} alt="profileUseur_picto"/>Profile</Link>
             <Link className={style.navLinks} to="/settings"> <img className={style.navPictos} src={settings} alt="settings_picto"/>Settings</Link>
           </nav>
 

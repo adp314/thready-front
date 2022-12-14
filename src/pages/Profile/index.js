@@ -5,10 +5,13 @@ import { api } from "../../api/api";
 export function Profile() {
   const [user, setUser] = useState({ name: "", email: "" });
   const navigate = useNavigate();
+
   useEffect(() => {
     async function fetchUser() {
       const response = await api.get("/user/profile");
+      console.log(response);
       setUser(response.data);
+      console.log(user);
     }
 
     fetchUser();
@@ -21,9 +24,27 @@ export function Profile() {
 
   return (
     <>
+    <div>
       <h1>{user.userName}</h1>
       <p>{user.email}</p>
       <button onClick={handleLogOut}>Sair</button>
+    </div>
+    <ul>
+      {user.threadsCreated ? 
+        user.threadsCreated.map(element => {
+          return <li>
+                   <h2>{element.title}</h2>
+                   <p>{element.text}</p>
+                   <p>{element.likes}</p>
+                   <p>{element.tags.map(tag => {
+                    return <>
+                      <p>{tag}</p>
+                    </>
+                   })}</p>
+                 </li>})
+      
+      : 'Loading...'}
+    </ul>
     </>
   );
 }
