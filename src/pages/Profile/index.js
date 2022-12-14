@@ -8,15 +8,19 @@ export function Profile() {
 
   useEffect(() => {
     async function fetchUser() {
-      const response = await api.get("/user/profile");
-      console.log(response);
-      setUser(response.data);
-      console.log(user);
+      try {
+        const response = await api.get("/user/profile");
+        // console.log(response);
+        setUser(response.data);
+        console.log(user);
+      }
+      catch (err) {
+        console.log(err);
+      }
     }
-
     fetchUser();
   }, []);
-
+ 
   function handleLogOut() {
     localStorage.removeItem("loggedInUser");
     navigate("/");
@@ -29,21 +33,27 @@ export function Profile() {
       <p>{user.email}</p>
       <button onClick={handleLogOut}>Sair</button>
     </div>
+    {/* Essa lista esta dando um erro de keyprop, q não consegui corrigir */}
     <ul>
       {user.threadsCreated ? 
         user.threadsCreated.map(element => {
-          return <li>
-                   <h2>{element.title}</h2>
-                   <p>{element.text}</p>
-                   <p>{element.likes}</p>
-                   <p>{element.tags.map(tag => {
-                    return <>
-                      <p>{tag}</p>
-                    </>
-                   })}</p>
+          return <li key={element._id}> 
+                   <div>
+                      <h2>{element.title}</h2>
+                      <p>{element.text}</p>
+                      <p>{element.likes}</p>
+                      <div>
+                        {                       
+                        element.tags.map(tag => {
+                          return <>
+                          <p>{tag}</p>
+                          </>
+                        })}
+                      </div>
+                    </div>
+                    <button>Edit</button>
                  </li>})
-      
-      : 'Loading...'}
+                          : 'Loading...'}
     </ul>
     </>
   );
