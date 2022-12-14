@@ -8,7 +8,7 @@ import tlogo from "../../images/tlogo.png";
 import home from "../../images/home.png";
 import profileuser from "../../images/profileuser.png";
 import settings from "../../images/settings.png";
-import { ThreadCard } from "../../components/ThreadCard";
+import { ThreadCard } from "../../components/ThreadCard/index.js";
 
 
 export function Home() {
