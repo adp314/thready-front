@@ -1,8 +1,7 @@
 .settingsContainer {
     background-color: var(--primary2);
-    margin-top: 75px;
-    padding: 20px;
-    width: 400px;
+    padding: 25px;
+    width: 450px;
     display: flex;
     flex-direction: column;
     gap:10px;
@@ -11,8 +10,11 @@
 }
 
 .profileImg {
-    width: 200px;
+    width: 170px;
+    height: 170px;
     align-self: center;
+    border-radius: 50%;
+    margin-top: 5%;
 }
 
 .settingsFormContainer{
@@ -26,3 +28,121 @@
     flex-direction: column;
 }
 
+.settingsHeaderContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 25% 5px 13px 5px;
+}
+
+.settingsHeaderContainer div {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.settingsHeaderLogout {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.settingsHeaderLogout:hover {
+    filter: opacity(0.5) drop-shadow(0 0 0 red);
+}
+
+.settingsHeaderContainer img {
+    width: 32px;
+    height: 32px;
+}
+
+.settingsHeaderContainer h1 {
+   font-size: 1.5rem;
+   font-weight: 400;
+}
+
+.settingsContainer h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 3%;
+}
+.profileImg{
+    box-shadow: var(--shadowBox1);
+}
+.settingsImgLabel {
+    background-color: var(--light);
+    color: var(--dark);
+    width: 40px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top:15px;
+
+}
+
+.settingsImgLabel img {
+    width: 32px;
+}
+
+.settingsImgLabel:hover{
+    background-color: var(--colory1);
+}
+
+.spanFile {
+    margin-top: 5px;
+}
+
+.settingsFromLabels {
+    margin-top: 15px;
+    font-size: 1.3rem;
+}
+
+.settingsFormInputs[type=text],.settingsFormInputs[type=password] {
+    margin-top: 5px;
+    height: 35px;
+    width: 300px;
+    border-radius: 5px;
+    border-style: none;
+    padding: 7px;
+    font-size: 1rem;
+}
+
+.settingsFormButton {
+    height: 35px;
+    width: 300px;
+    border-radius: 5px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--colory1);
+    color: var(--light);
+    filter: opacity(0.8);
+}
+
+.settingsFormButton:hover {
+    background-color: var(--colory1);
+    color: var(--light);
+    filter: opacity(1);
+}
+
+.settingsNoConnected {
+    
+    background-color: var(--primary2);
+    margin-top: 20%;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.settingsNoConnectedText {
+    text-decoration: none;
+    color: var(--light);
+}
+
+.settingsNoConnectedText:hover {
+    color: var(--colory1);
+}
