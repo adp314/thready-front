@@ -10,6 +10,7 @@ import profileuser from "../../images/profileuser.png";
 import logoutPicto from "../../images/logout.png";
 import settings from "../../images/settings.png";
 import { ThreadCard } from "../../components/ThreadCard/index.js";
+import upArrow from "../../images/up-arrow.png"
 
 
 export function Home() {
@@ -22,6 +23,19 @@ export function Home() {
     });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const [fix, setFix] = useState(false)
+  const [visible, setVisible] = useState(false)
+  
+
+  function setFixed(){
+    if (window.scrollY >= 150) {
+      setFix(true)
+    } else {
+      setFix(false)
+    }
+    }
+
+  window.addEventListener("scroll", setFixed)
 
   function isLogged(){
     const loggedInUserJSONContent = localStorage.getItem("loggedInUser");
@@ -72,12 +86,32 @@ export function Home() {
     isLogged();
   }, []);
 
+
+  function toggleVisible() {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 300){
+      setVisible(true)
+    } 
+    else if (scrolled <= 300){
+      setVisible(false)
+    }
+  };
+
+  const scrollToTop = () =>{
+    window.scrollTo({
+      top: 0, 
+      behavior: 'smooth'
+    });
+  };
+
+  window.addEventListener('scroll', toggleVisible);
+
   return (
     <div className={style.homeContent}>
       <div className={style.homeLeftContainer}>
         <img className={style.homeTLogo} src={tlogo} alt="thready_logo"/>
           <nav className={style.navMenu}>
-            <Link className={style.navLinks} to="/home"> <img className={style.navPictos} src={home} alt="home_picto"/>Home</Link>
+            <Link className={style.navLinks} to="/home" onClick={() => window.location.reload(false)}> <img className={style.navPictos} src={home} alt="home_picto"/>Home</Link>
             <Link className={style.navLinks} to="/home"> <img className={style.navPictos} src={profileuser} alt="profileUseur_picto"/>Profile</Link>
             <Link className={style.navLinks} to="/settings"> <img className={style.navPictos} src={settings} alt="settings_picto"/>Settings</Link>
           </nav>
@@ -89,14 +123,15 @@ export function Home() {
             <img className={style.homeCardLogout} src={logoutPicto} alt="logout_picto" onClick={handleLogOut}/>
           </div>
           : <div className={style.profileCardNotLogged}>
-            <p> not logged !</p>
+          <img className={style.homeCardProfileImg}src={profileuser} alt="profile_img"/>
+            <Link className={style.notConnectedHomeLinkToLoggin} to="/login">Login / Signup</Link>
             </div>
           }
       </div>
 
       <div className={style.homeCentralContainer}>
         <nav className={style.containerStickyNav}>
-          <Link className={style.stickyPictoNavHome} to="/home">Home</Link>
+          <Link className={style.stickyPictoNavHome} to="/home" onClick={() => window.location.reload(false)}>Home</Link>
         </nav>
         
          { threadsAll.map(element => {
@@ -106,9 +141,14 @@ export function Home() {
       </div>
 
       <div className={style.homeRightContainer}>
-      <h2 className={style.h2Tags}>Most popular <span className={style.spanTags}>Tags</span></h2>
-        <div className={style.homeTopTagsContainer}></div>
-        <div className={style.homeFiltertagsContainer}></div>
+        <div className={style.homeRightContainerTags}>
+          <h2 className={style.h2Tags}>Most popular <span className={style.spanTags}>Tags</span></h2>
+            <div className={style.homeTopTagsContainer}></div>
+            <div className={style.homeFiltertagsContainer}></div>
+        </div>
+        <div className={style.stickyUpArrowdiv} onClick={scrollToTop}>
+              <img src={upArrow} alt="upArrow_picto"/>
+        </div>
       </div>
     </div>
   )

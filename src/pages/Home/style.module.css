@@ -5,6 +5,7 @@
 
 .homeTLogo{
     width: 64px;
+    margin-top: 30px;
     
 }
 
@@ -37,7 +38,9 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-top: 30px;
+    height: 100vh;
+    position: sticky;
+    top:0;
 }
 
 .homeCardProfileImg {
@@ -45,6 +48,7 @@
     height: 48px;
     border-radius: 50%;
     box-shadow: var(--shadowBox1);
+    
 }
 
 .homeCardLogout {
@@ -67,6 +71,32 @@
     margin-top: 32px;
 }
 
+
+
+.profileCardNotLogged {
+    width: 250px;
+    height: 70px;
+    border-radius: 7px;
+    box-shadow: var(--shadowBox1);
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    background-color: var(--primary2);
+    gap: 25px;
+    padding: 15px;
+    margin-top: 32px;
+}
+.notConnectedHomeLinkToLoggin {
+    text-decoration: none;
+    color: var(--light);
+}
+.notConnectedHomeLinkToLoggin:hover {
+    text-decoration: n;
+    color: var(--colory1);
+    cursor: pointer;
+}
+
+
 .homeCardUsername {
     font-size: 1rem;
     color: var(--colory1);
@@ -78,11 +108,20 @@
 
 .homeCentralContainer {
     background-color: var(--primary2);
-    height: 100vh;
+    height: 100%;
     width: 600px;
 }
 
 .homeRightContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    position: sticky;
+    top:0;
+}
+
+.homeRightContainerTags {
     width: 300px;
     height: 300px;
     background-color: var(--primary2);
@@ -98,9 +137,14 @@
 }
 
 .containerStickyNav {
-    background-color: rgba(0, 0, 0, 0.288);
+    background-color: rgba(0, 0, 0, 0.63);
     width: 100%;
     height: 50px;
+    position: sticky;
+    top:0;
+    backdrop-filter: blur(8px);
+    display: flex;
+
 }
 .stickyPictoNavHome {
     text-decoration: none;
@@ -108,4 +152,24 @@
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--colory1);
+    margin: auto 0 auto 15px;
+}
+
+.stickyUpArrowdiv {
+    background-color: var(--primary3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border-style: none;
+    box-shadow: var(--shadowBox1);
+}
+
+.stickyUpArrowdiv img {
+    width: 36px;
+    height: 36px;
 }
