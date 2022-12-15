@@ -109,6 +109,7 @@ export function Home() {
   return (
     <div className={style.homeContent}>
       <div className={style.homeLeftContainer}>
+          <nav>
         <img className={style.homeTLogo} src={tlogo} alt="thready_logo"/>
             <Link className={style.navLinks} to="/home" onClick={() => window.location.reload(false)}> <img className={style.navPictos} src={home} alt="home_picto"/>Home</Link>
             <Link className={style.navLinks} to="/home"> <img className={style.navPictos} src={profileuser} alt="profileUseur_picto"/>Profile</Link>

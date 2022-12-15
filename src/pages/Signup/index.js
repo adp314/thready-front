@@ -9,11 +9,13 @@ import defaultImg from "../../images/defaultImg.jpg"
 export function Signup() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    name: "",
+    userName: "",
     email: "",
-    password: "",
+    passwordHash: "",
     confirmPassword: "",
   });
+
+  // Jose123!
 
   const [img, setImg] = useState(defaultImg);
 
@@ -44,6 +46,7 @@ export function Signup() {
 
     try {
       const imgURL = await handleUpload();
+      console.log(form);
       await api.post("/user/signup", { ...form, img: imgURL });
 
       navigate("/login");
@@ -67,9 +70,9 @@ export function Signup() {
         <input
           className={style.signupInputs}
           id="formName"
-          name="name"
+          name="userName"
           type="text"
-          value={form.name}
+          value={form.userName}
           onChange={handleChange}
         />
 
@@ -87,9 +90,9 @@ export function Signup() {
         <input
           className={style.signupInputs}
           id="formPassword"
-          name="password"
+          name="passwordHash"
           type="password"
-          value={form.password}
+          value={form.passwordHash}
           onChange={handleChange}
         />
 
