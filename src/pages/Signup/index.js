@@ -3,8 +3,6 @@ import style from "./style.module.css";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import tlogo from "../../images/tlogo.png";
-import uploadImg from "../../images/uploadimg.png";
-import defaultImg from "../../images/defaultImg.jpg"
 
 export function Signup() {
   const navigate = useNavigate();
@@ -15,36 +13,16 @@ export function Signup() {
     confirmPassword: "",
   });
 
-  const [img, setImg] = useState(defaultImg);
-
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleImage(e) {
-    console.log(e.target.files);
-        setImg(URL.createObjectURL(e.target.files[0]));
-  }
-
-  async function handleUpload() {
-    try {
-      const uploadData = new FormData();
-      uploadData.append("picture", img);
-
-      const response = await api.post("/upload-image", uploadData);
-
-      return response.data.url;
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     try {
-      const imgURL = await handleUpload();
-      await api.post("/user/signup", { ...form, img: imgURL });
+      await api.post("/user/signup", { ...form });
 
       navigate("/login");
     } catch (error) {
@@ -63,7 +41,7 @@ export function Signup() {
 
 
       <div className={style.signupInfosDiv}>
-        <label className={style.signupLabels} htmlFor="formName">Name</label>
+        <label className={style.signupLabels} htmlFor="formName">Username</label>
         <input
           className={style.signupInputs}
           id="formName"
@@ -89,6 +67,8 @@ export function Signup() {
           id="formPassword"
           name="password"
           type="password"
+          pattern="/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm"
+          title="A01!"
           value={form.password}
           onChange={handleChange}
         />
@@ -99,23 +79,12 @@ export function Signup() {
           id="formConfirmPassword"
           type="password"
           name="confirmPassword"
+          pattern="/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm"
+          title="A01!"
           value={form.confirmPassword}
           onChange={handleChange}
         />
         <button className={style.signupButton} type="submit">Submit</button>
-        </div>
-
-        <div className={style.signupImgDiv}>
-        <label className={style.signupImgLabel} htmlFor="formImg">
-        <img className={style.uploadImg}src={uploadImg} alt="upload img"/>
-        </label>
-        <img className={style.fileImg} src={img} alt={img}/>
-        <input
-          className={style.signupImgInput}
-          type="file" 
-          id="formImg" 
-          onChange={handleImage}
-        />
         </div>
       </form>
     </div>
