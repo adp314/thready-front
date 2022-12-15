@@ -7,12 +7,12 @@ import tlogo from "../../images/tlogo.png";
 export function Signup() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    name: "",
+    userName: "",
     email: "",
-    password: "",
+    passwordHash: "",
     confirmPassword: "",
   });
-
+  
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
@@ -22,7 +22,9 @@ export function Signup() {
     e.preventDefault();
 
     try {
+
       await api.post("/user/signup", { ...form });
+
 
       navigate("/login");
     } catch (error) {
@@ -45,9 +47,9 @@ export function Signup() {
         <input
           className={style.signupInputs}
           id="formName"
-          name="name"
+          name="userName"
           type="text"
-          value={form.name}
+          value={form.userName}
           onChange={handleChange}
         />
 
@@ -65,11 +67,12 @@ export function Signup() {
         <input
           className={style.signupInputs}
           id="formPassword"
-          name="password"
+          name="passwordHash"
           type="password"
+
           pattern="/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm"
           title="A01!"
-          value={form.password}
+          value={form.passwordHash}
           onChange={handleChange}
         />
 
