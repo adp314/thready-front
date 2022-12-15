@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { api } from "../../api/api";
+import { BasicFront } from "../../components/BasicFront";
+import style from "./style.module.css";
 
 export function Profile() {
   const [user, setUser] = useState({ name: "", email: "" });
@@ -26,35 +28,42 @@ export function Profile() {
     navigate("/");
   }
 
-  return (
-    <>
-    <div>
-      <h1>{user.userName}</h1>
-      <p>{user.email}</p>
-      <button onClick={handleLogOut}>Sair</button>
-    </div>
-    {/* Essa lista esta dando um erro de keyprop, q não consegui corrigir */}
-    <ul>
-      {user.threadsCreated ? 
-        user.threadsCreated.map(element => {
-          return <li key={element._id}> 
-                   <div>
-                      <h2>{element.title}</h2>
-                      <p>{element.text}</p>
-                      <p>{element.likes}</p>
-                      <div>
-                        {                       
-                        element.tags.map(tag => {
-                          return <>
-                          <p>{tag}</p>
-                          </>
-                        })}
-                      </div>
-                    </div>
-                    <button>Edit</button>
-                 </li>})
-                          : 'Loading...'}
-    </ul>
-    </>
-  );
-}
+    return (
+
+      <BasicFront navContent={
+      <nav className={style.containerStickyNav}>
+      <Link className={style.stickyPictoNavHome} to="/home">Home</Link>
+      </nav>} centralContent={
+        <>
+        <div>
+          <h1>{user.userName}</h1>
+          <p>{user.email}</p>
+          <button onClick={handleLogOut}>Sair</button>
+        </div>
+        {/* Essa lista esta dando um erro de keyprop, q não consegui corrigir */}
+        <ul>
+          {user.threadsCreated ? 
+            user.threadsCreated.map(element => {
+              return <li key={element._id}> 
+                       <div>
+                          <h2>{element.title}</h2>
+                          <p>{element.text}</p>
+                          <p>{element.likes}</p>
+                          <div>
+                            {                       
+                            element.tags.map(tag => {
+                              return <>
+                              <p>{tag}</p>
+                              </>
+                            })}
+                          </div>
+                        </div>
+                        <button>Edit</button>
+                     </li>})
+                              : 'Loading...'}
+        </ul>
+        </>
+    
+      }/>
+      );
+  };

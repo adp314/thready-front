@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 export function CreateThread(){
 
@@ -8,6 +10,7 @@ export function CreateThread(){
     "Food", "Business", "Health", "Travel"]; // pegar direto do BD??
 
     const navigate = useNavigate();
+
 
     const [form, setForm] = useState({
         title: "",
@@ -55,6 +58,8 @@ export function CreateThread(){
         }
     }
 
+    const [editorState, onEditorStateChange] = useState()
+
     return (
         <form>
             <label htmlFor="inputTitle">Title: </label>
@@ -66,15 +71,31 @@ export function CreateThread(){
                 value={form.title}
                 required
             />
+            <div>
             <label htmlFor="inputText">Text: </label>
-            <input
+            <Editor
+                editorState={editorState}
+                toolbarClassName="toolbarClassName"
+                wrapperClassName="wrapperClassName"
+                editorClassName="editorClassName"
+                onEditorStateChange={onEditorStateChange}
+            />
+            
+            {/* <input
                 id="inputText"
                 type="text"
                 name="text"
                 onChange={handleChange}
                 value={form.text}
                 required
-            />
+            /> */}
+
+            {/* <textarea
+            disabled
+            value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
+            /> */}
+            </div>
+
             <label htmlFor="inputTags">Tags: </label>
 
             <div>
