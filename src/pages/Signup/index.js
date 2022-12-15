@@ -3,7 +3,7 @@ import style from "./style.module.css";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import tlogo from "../../images/tlogo.png";
-import uploadImg from "../../images/upload_img.png";
+import uploadImg from "../../images/uploadimg.png";
 import defaultImg from "../../images/defaultImg.jpg"
 
 export function Signup() {
