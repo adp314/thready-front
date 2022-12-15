@@ -12,9 +12,7 @@ export function Profile() {
     async function fetchUser() {
       try {
         const response = await api.get("/user/profile");
-        // console.log(response);
         setUser(response.data);
-        console.log(user);
       }
       catch (err) {
         console.log(err);
@@ -26,6 +24,15 @@ export function Profile() {
   function handleLogOut() {
     localStorage.removeItem("loggedInUser");
     navigate("/");
+  }
+
+  async function deleteThread(id){
+    try {
+      await api.delete(`./thread/delete/${id}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
     return (
@@ -59,6 +66,7 @@ export function Profile() {
                           </div>
                         </div>
                         <button>Edit</button>
+                        <button onClick={() => deleteThread(element._id)}>Delete</button> 
                      </li>})
                               : 'Loading...'}
         </ul>
