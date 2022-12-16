@@ -158,10 +158,14 @@
 }
 
 .cardTags {
+    display: flex;
+    padding: 5px;
+    border-style: solid;
+}
+
+.cardTags p {
     background-color: var(--primary2);
-    width: 7em;
     padding: 1%;
-    text-align: center;
+    margin: 7px;
     border-radius: 5px;
-    margin: 10px;
 }

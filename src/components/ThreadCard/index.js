@@ -23,7 +23,7 @@ export function ThreadCard(props){
             try{
             const response = await api.get("/user/profile");
             setUser(response.data);
-            }
+                }
             catch(error){
                 console.log(error);
             }
@@ -31,6 +31,8 @@ export function ThreadCard(props){
     
         fetchUser();
       }, []);
+
+
 
     return (
         <div className={style.cardContainer}>
@@ -50,7 +52,9 @@ export function ThreadCard(props){
                 
                 <div className={style.cardInfosLikes}>
                     <p className={style.cardLikesCount}>{thread.likes}</p>
-                    <img className={style.cardLikesPicto} src={likePicto} alt="like_picto"/>
+                    <button className={style.buttonLike}>
+                        <img className={style.cardLikesPicto} src={likePicto} alt="like_picto"/>
+                    </button>
                 </div>
 
             </div>

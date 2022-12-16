@@ -88,9 +88,9 @@ export function Profile() {
             <hr/>
             <div className={style.cardTags}>{                
          element.tags.map(tag => {
-         return <div>
-         <p>{tag}</p>
-         </div>
+         return   <>
+                    <p>{tag}</p>
+                  </>
           })}</div>
         </div>
                      
