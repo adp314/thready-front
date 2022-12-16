@@ -6,6 +6,7 @@
     top:0;
     backdrop-filter: blur(8px);
     display: flex;
+    justify-content: space-between;
 
 }
 .stickyPictoNavProfile {
@@ -160,7 +161,6 @@
 .cardTags {
     display: flex;
     padding: 5px;
-    border-style: solid;
 }
 
 .cardTags p {
@@ -168,4 +168,30 @@
     padding: 1%;
     margin: 7px;
     border-radius: 5px;
+}
+
+
+
+
+
+.imgCreate {
+    width: 24px;
+    margin-bottom: 3px;
+    
+}
+
+.stickyNavHomeCreate p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--light);
+}
+
+.stickyNavHomeCreate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+    text-decoration: none;
+    color: var(--light);
+    margin: auto 20px auto 0;
 }

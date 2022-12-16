@@ -11,7 +11,7 @@ import logoutPicto from "../../images/logout.png";
 import settings from "../../images/settings.png";
 import upArrow from "../../images/up-arrow.png"
 import wipPicto from "../../images/work-in-progress.png"
-import writing from "../../images/writing.png"
+import imgCreate from ".//..//..//images/writing.png"
 
 
 export function BasicFront(props) {

@@ -33,6 +33,8 @@ export function ThreadCard(props){
       }, []);
 
 
+      
+
 
     return (
         <div className={style.cardContainer}>
@@ -52,9 +54,9 @@ export function ThreadCard(props){
                 
                 <div className={style.cardInfosLikes}>
                     <p className={style.cardLikesCount}>{thread.likes}</p>
-                    <button className={style.buttonLike}>
+                    
                         <img className={style.cardLikesPicto} src={likePicto} alt="like_picto"/>
-                    </button>
+                    
                 </div>
 
             </div>
