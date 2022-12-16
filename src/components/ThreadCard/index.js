@@ -7,6 +7,7 @@ import { api } from "../../api/api";
 export function ThreadCard(props){
 
     const thread = props.threadObj;
+    
     const [user, setUser] = useState({ 
         userName: "",
         email: "",
