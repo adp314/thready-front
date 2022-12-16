@@ -6,7 +6,8 @@
     top:0;
     backdrop-filter: blur(8px);
     display: flex;
-
+    align-items: center;
+    justify-content: space-between;
 }
 .stickyPictoNavHome {
     text-decoration: none;
@@ -15,4 +16,9 @@
     font-weight: 600;
     color: var(--colory1);
     margin: auto 0 auto 15px;
+}
+
+.imgCreate {
+    width: 26px;
+    margin: 0 6px;
 }
