@@ -30,8 +30,8 @@ export function Home() {
           <BasicFront navContent={
           <nav className={style.containerStickyNav}>
           <Link className={style.stickyPictoNavHome} to="/home">Home</Link>
-          <Link to="/create">
-            <img src={imgCreate} className={style.imgCreate}/>
+          <Link className={style.stickyNavHomeCreate} to="/create"> <p>Create</p>
+            <img src={imgCreate} className={style.imgCreate} alt="create_threads_img"/>
           </Link>
           </nav>
           } centralContent={

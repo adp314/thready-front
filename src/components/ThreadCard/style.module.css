@@ -29,6 +29,7 @@
 .cardLikesPicto {
     width: 20px;
     margin-top: 3px;
+    cursor: pointer;
 }
 
 .cardTitle {
@@ -98,10 +99,10 @@
     align-self: flex-end;
 }
 
+
 .cardTags {
     display: flex;
     padding: 5px;
-    border-style: solid;
 }
 
 .cardTags p {
@@ -109,10 +110,4 @@
     padding: 1%;
     margin: 7px;
     border-radius: 5px;
-}
-
-.buttonLike {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
 }

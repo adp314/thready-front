@@ -4,6 +4,7 @@ import { api } from "../../api/api";
 import { BasicFront } from "../../components/BasicFront";
 import style from "./style.module.css";
 import likePicto from "../../images/like.png"
+import imgCreate from ".//..//..//images/writing.png"
 
 
 export function Profile() {
@@ -37,7 +38,10 @@ export function Profile() {
 
       <BasicFront navContent={
       <nav className={style.containerStickyNav}>
-      <Link className={style.stickyPictoNavProfile} to="/profile">Profile</Link>
+          <Link className={style.stickyPictoNavProfile} to="/Profile">Profile</Link>
+          <Link className={style.stickyNavHomeCreate} to="/create"> <p>Create</p>
+            <img src={imgCreate} className={style.imgCreate} alt="create_threads_img"/>
+          </Link>
       </nav>} centralContent={
         <>
         <div className={style.profileCard}>
@@ -97,7 +101,7 @@ export function Profile() {
           </>
         })
 
-                              : 'Loading...'}
+                              : <h1>'Loading...'</h1>}
         </>
       }/>
       );
