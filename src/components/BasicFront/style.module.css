@@ -110,6 +110,10 @@
     background-color: var(--primary2);
     height: 100%;
     width: 600px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-style: none;
+    box-shadow: var(--shadowBox1);
 }
 
 .rightContainer {
@@ -129,11 +133,18 @@
     padding: 20px;
     border-radius: 7px;
     box-shadow: var(--shadowBox1);
+    display: flex;
+    flex-direction: column;
+    gap:4em;
 }
 .spanTags{
     background-color: var(--primary1);
     border-radius: 7px;
     color: var(--colory1);
+}
+
+.rightContainerTags img {
+    align-self: center;
 }
 
 .containerStickyNav {
@@ -146,17 +157,9 @@
     display: flex;
 
 }
-.stickyPictoNavHome {
-    text-decoration: none;
-    color: var(--light);
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--colory1);
-    margin: auto 0 auto 15px;
-}
 
 .stickyUpArrowdiv {
-    background-color: var(--primary3);
+    background-color: var(--primary2);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -172,4 +175,16 @@
 .stickyUpArrowdiv img {
     width: 36px;
     height: 36px;
+}
+
+.botsideContainer {
+    display: flex;
+    gap: 25px;
+    width: 300px;
+}
+
+.botsideContainer p {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.356);
 }

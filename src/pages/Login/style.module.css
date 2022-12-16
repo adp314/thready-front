@@ -3,7 +3,7 @@ body{
     justify-content: center;
 }
 .loginContainer{
-    margin-top: 200px;
+    margin-top: 25%;
     height: 500px;
     width: 500px;
     background-color: var(--primary2);

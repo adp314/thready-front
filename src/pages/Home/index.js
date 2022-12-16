@@ -8,6 +8,7 @@ import style from "./style.module.css"
 export function Home() {
 
     const [threadsAll, setThreads] = useState([]);
+    
     const navigate = useNavigate();
 
     useEffect(() => {

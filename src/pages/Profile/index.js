@@ -3,9 +3,12 @@ import { useNavigate, Link } from "react-router-dom";
 import { api } from "../../api/api";
 import { BasicFront } from "../../components/BasicFront";
 import style from "./style.module.css";
+import likePicto from "../../images/like.png"
+
 
 export function Profile() {
-  const [user, setUser] = useState({ name: "", email: "" });
+
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,48 +25,71 @@ export function Profile() {
     }
     fetchUser();
   }, []);
- 
-  function handleLogOut() {
-    localStorage.removeItem("loggedInUser");
-    navigate("/");
-  }
 
     return (
 
       <BasicFront navContent={
       <nav className={style.containerStickyNav}>
-      <Link className={style.stickyPictoNavHome} to="/home">Home</Link>
+      <Link className={style.stickyPictoNavProfile} to="/profile">Profile</Link>
       </nav>} centralContent={
         <>
-        <div>
-          <h1>{user.userName}</h1>
-          <p>{user.email}</p>
-          <button onClick={handleLogOut}>Sair</button>
+        <div className={style.profileCard}>
+
+        <div className={style.profileCardContent}>
+          <img src={user.profileImg} alt="profile_img"/>
+              <div className={style.profileCardInfos}>
+                <h1>{user.userName}</h1>
+                <p>{user.email}</p>
+              </div>
         </div>
+
+          <div className={style.profileCardHr}>
+
+          <hr/>
+          </div>
+
+        </div>
+        
         {/* Essa lista esta dando um erro de keyprop, q não consegui corrigir */}
-        <ul>
+  
           {user.threadsCreated ? 
             user.threadsCreated.map(element => {
-              return <li key={element._id}> 
-                       <div>
-                          <h2>{element.title}</h2>
-                          <p>{element.text}</p>
-                          <p>{element.likes}</p>
-                          <div>
-                            {                       
-                            element.tags.map(tag => {
-                              return <>
-                              <p>{tag}</p>
-                              </>
-                            })}
-                          </div>
-                        </div>
-                        <button>Edit</button>
-                     </li>})
+              return  <>
+              <div key={element._id} className={style.cardContainer}>
+            <div className={style.cardImgBannerContainer} style={{backgroundImage: `url(${element.banner})`}}>
+           
+            <Link to={`/thread/${element._id}`} className={style.cardTitle}>{element.title}</Link>
+        
+            </div>
+
+            <div className={style.cardInfosContainer}>
+
+                <div className={style.cardInfosUser}>
+                    <img className={style.cardInfosUserImg} src={user.profileImg} alt="profile_picture"/>
+                    <Link className={style.cardUsernameCreator} to={`/profile`}>{user.userName}</Link>
+                </div>
+                <div className={style.cardInfosDate}>{element.createdAt}</div>
+                
+                <div className={style.cardInfosLikes}>
+                    <p className={style.cardLikesCount}>{element.likes}</p>
+                    <img className={style.cardLikesPicto} src={likePicto} alt="like_picto"/>
+                </div>
+
+            </div>
+
+            <hr/>
+            <div className={style.cardTags}>{                
+         element.tags.map(tag => {
+         return <div>
+         <p>{tag}</p>
+         </div>
+          })}</div>
+        </div>
+                     
+          </>
+        })
                               : 'Loading...'}
-        </ul>
         </>
-    
       }/>
       );
   };

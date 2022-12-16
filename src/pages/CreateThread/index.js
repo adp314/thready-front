@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import JoditEditor from 'jodit-react';
+
+
 
 export function CreateThread(){
 
@@ -22,6 +23,8 @@ export function CreateThread(){
         new Array(arrTags.length).fill(false)
     );
 
+    
+
     function handleChange(event) {
         setForm({ ...form, [event.target.name]: event.target.value })
     }
@@ -32,6 +35,16 @@ export function CreateThread(){
         );
         setCheckedState(updatedCheckedState);
     };
+
+    const editor = useRef(null);
+
+
+	const config = {
+		readonly: false,
+        height: 500,
+        theme: "dark",
+         // all options from https://xdsoft.net/jodit/doc/,
+	}
 
     useEffect(() => {
         const arrTagsSelected = [];
@@ -58,7 +71,14 @@ export function CreateThread(){
         }
     }
 
-    const [editorState, onEditorStateChange] = useState()
+    function handleSave() {
+        localStorage.setItem("document", form.text);
+    }
+
+    function loadDoc(){
+        setForm(localStorage.getItem("document"));
+    }
+
 
     return (
         <form>
@@ -71,33 +91,25 @@ export function CreateThread(){
                 value={form.title}
                 required
             />
-            <div>
+        <div>
             <label htmlFor="inputText">Text: </label>
-            <Editor
-                editorState={editorState}
-                toolbarClassName="toolbarClassName"
-                wrapperClassName="wrapperClassName"
-                editorClassName="editorClassName"
-                onEditorStateChange={onEditorStateChange}
-            />
-            
-            {/* <input
-                id="inputText"
-                type="text"
-                name="text"
-                onChange={handleChange}
-                value={form.text}
-                required
-            /> */}
-
-            {/* <textarea
-            disabled
-            value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
-            /> */}
+            <JoditEditor
+			ref={editor}
+			value={form.text}
+			config={config}
+			tabIndex={1} // tabIndex of textarea
+			onBlur={newContent => setForm({text: newContent})} // preferred to use only this option to update the content for performance reasons
+			onChange={newContent => {}}
+		    />
+            <div className="Btns">
+                <button onClick={handleSave}>Gravar Documento</button>
+                <button onClick={loadDoc}>Carregar Último</button>
+                <button onClick={() => setForm({text: ""})}>Novo</button>
             </div>
+        </div>
+            
 
             <label htmlFor="inputTags">Tags: </label>
-
             <div>
                 Select your tags:
             {arrTags.map(function(element, index){
@@ -116,27 +128,6 @@ export function CreateThread(){
             })}
             </div>
             <button onClick={handleSubmit}>Create</button>
-
-
-
-
-
-            {/* <select
-                id="inputTags"
-                name="tags"
-                onChange={handleChange}
-                //defaultValue={}
-            >
-            <option value="Sports">Sports</option>
-            <option value="Nature">Nature</option>
-            <option value="Tec">Tec</option>
-            <option value="Tv & Movies">Tv & Movies</option>
-            <option value="Music">Music</option>
-            <option value="Food">Food</option>
-            <option value="Business">Business</option>
-            <option value="Health">Health</option>
-            <option value="Travel">Travel</option>
-            </select> */}
         </form>
     )
 };
