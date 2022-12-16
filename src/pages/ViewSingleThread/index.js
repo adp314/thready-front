@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { api } from "../../api/api";
-import { useParams } from "react-router-dom";
+import { BasicFront } from "../../components/BasicFront";
+import style from "./style.module.css"
+import likePicto from "../../images/like.png"
+
 
 export function ViewSingleThread() {
 
@@ -18,6 +21,8 @@ export function ViewSingleThread() {
         creatorName: ''
     });
 
+    const [user, setUser] = useState({});
+
     useEffect(() => {
         async function getThread(){
             try {
@@ -32,33 +37,65 @@ export function ViewSingleThread() {
         console.log(thread);
     }, []);
 
+    useEffect(() => {
+
+        async function fetchUser() {
+    
+            try{
+            const response = await api.get("/user/profile");
+            setUser(response.data);
+            }
+            catch(error){
+                console.log(error);
+            }
+        }
+    
+        fetchUser();
+      }, []);
     
 
     return (
+
+        <BasicFront navContent={
+            <nav className={style.containerStickyNav}>
+            <Link className={style.stickyPictoNavProfile} to="/profile">Thread</Link>
+            </nav>} centralContent={
         <>
         { thread.title === '' ?   'Loading...': 
-            <div>
-                <div>
-                    <img src={thread.banner} alt="banner_img"/>
-                    <h1>{thread.creator.userName}</h1>
-                    <p>{thread.creator.email}</p>
-                </div>
-                <div>
-                    <h2>{thread.title}</h2>
-                    <p dangerouslySetInnerHTML={{__html: `${thread.text}`}} />
-                    <p>{thread.likes}</p>
-                    <div>
-                        {                       
-                        thread.tags.map(tag => {
-                        return <>
-                        <p>{tag}</p>
-                        </>
-                        })}
-                    </div>
-                </div>
+        <div className={style.cardContainer}>
+            <div className={style.cardImgBannerContainer} style={{backgroundImage: `url(${thread.banner})`}}>
+           
+            <Link to={`/thread/${thread._id}`} className={style.cardTitle}>{thread.title}</Link>
+        
             </div>
+
+            <div className={style.cardInfosContainer}>
+
+                <div className={style.cardInfosUser}>
+                    <img className={style.cardInfosUserImg} src={user.profileImg} alt="profile_picture"/>
+                    <Link className={style.cardUsernameCreator} to={`/view/${thread.creator._id}`}>{thread.creator.userName}</Link>
+                </div>
+                <div className={style.cardInfosDate}>{thread.createdAt}</div>
+                
+                <div className={style.cardInfosLikes}>
+                    <p className={style.cardLikesCount}>{thread.likes}</p>
+                    <img className={style.cardLikesPicto} src={likePicto} alt="like_picto"/>
+                </div>
+
+            </div>
+
+            <hr/>
+        <div className={style.cardTags}>
+            {                       
+                thread.tags.map(tag => {
+                return <>
+                <p>{tag}</p>
+                </>
+                })}</div>
+        </div>
 }
         </>
-      );
+    }/>
+);
      
 }
