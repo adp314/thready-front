@@ -56,7 +56,14 @@ export function ThreadCard(props){
             </div>
 
             <hr/>
-            <div className={style.cardTags}>{thread.tags}</div>
+            <div className={style.cardTags}>
+            {                       
+                thread.tags.map(tag => {
+                return <>
+                <p>{tag}</p>
+                </>
+                })}
+            </div>
         </div>
     )
 }

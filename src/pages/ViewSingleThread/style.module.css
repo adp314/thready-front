@@ -53,12 +53,14 @@
 .cardTitle {
     text-decoration: none;
     color: var(--light);
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     text-align: center;
+    text-shadow: 2px px 3px rgba(0,0,0,0.5);
 }
 
 .cardTitle:hover {
     color: var(--colory1);
+    text-shadow: 2px 3px 3px rgba(0,0,0,0.5);
 }
 
 .cardInfosContainer {
@@ -78,7 +80,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 15px;
     gap: 10px;
 }
 
@@ -88,6 +90,11 @@
     font-size: 0.9rem;
 }
 
+.cardInfosLikes p {
+
+    align-self: center;
+    margin-top: 8px;
+}
 .cardUsernameCreator {
     margin-top: 3px;
     text-decoration: none;
@@ -117,10 +124,18 @@
 }
 
 .cardTags {
+    display: flex;
+    padding: 5px;
+}
+
+.cardTags p {
     background-color: var(--primary2);
-    width: 7em;
     padding: 1%;
-    text-align: center;
+    margin: 7px;
     border-radius: 5px;
-    margin: 10px;
+}
+
+.cardTextContainer {
+    padding: 20px 15px 20px 15px;
+    
 }

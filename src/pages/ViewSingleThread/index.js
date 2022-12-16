@@ -91,8 +91,15 @@ export function ViewSingleThread() {
                 return <>
                 <p>{tag}</p>
                 </>
-                })}</div>
+                })}
         </div>
+            <hr/>
+            
+            <div className={style.cardTextContainer} dangerouslySetInnerHTML={{__html: `${thread.text}`}} />
+            
+        </div>
+        
+        
 }
         </>
     }/>
