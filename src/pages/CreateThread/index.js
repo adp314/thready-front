@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { api } from "../../api/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import JoditEditor from 'jodit-react';
+import { BasicFront } from "../../components/BasicFront";
+import style from "./style.module.css"
 
 
 
@@ -79,8 +81,20 @@ export function CreateThread(){
         setForm(localStorage.getItem("document"));
     }
 
+    function refreshPage() {
+        window.location.reload(false);
+      }
+
 
     return (
+
+    <>
+        <BasicFront navContent={
+            <nav className={style.containerStickyNav}>
+          <Link className={style.stickyPictoNavCreate} to="/create" onClick={refreshPage}>Create</Link>
+          </nav>
+        } centralContent={
+
         <form>
             <label htmlFor="inputTitle">Title: </label>
             <input
@@ -102,9 +116,9 @@ export function CreateThread(){
 			onChange={newContent => {}}
 		    />
             <div className="Btns">
-                <button onClick={handleSave}>Gravar Documento</button>
-                <button onClick={loadDoc}>Carregar Último</button>
-                <button onClick={() => setForm({text: ""})}>Novo</button>
+                <button onClick={handleSave}>Save Document</button>
+                <button onClick={loadDoc}>Load Document</button>
+                <button onClick={() => setForm({text: ""})}>New Document</button>
             </div>
         </div>
             
@@ -129,5 +143,7 @@ export function CreateThread(){
             </div>
             <button onClick={handleSubmit}>Create</button>
         </form>
+        } />
+    </>
     )
 };
