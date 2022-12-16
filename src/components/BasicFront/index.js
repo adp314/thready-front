@@ -10,6 +10,7 @@ import profileuser from "../../images/profileuser.png";
 import logoutPicto from "../../images/logout.png";
 import settings from "../../images/settings.png";
 import upArrow from "../../images/up-arrow.png"
+import wipPicto from "../../images/work-in-progress.png"
 
 
 export function BasicFront(props) {
@@ -72,7 +73,7 @@ export function BasicFront(props) {
       <div className={style.leftContainer}>
         <img className={style.tLogo} src={tlogo} alt="thready_logo"/>
         <nav className={style.navMenu}>
-            <Link className={style.navLinks} to="/home" onClick={() => window.location.reload(false)}> <img className={style.navPictos} src={home} alt="home_picto"/>Home</Link>
+            <Link className={style.navLinks} to="/home"> <img className={style.navPictos} src={home} alt="home_picto"/>Home</Link>
             <Link className={style.navLinks} to="/profile"> <img className={style.navPictos} src={profileuser} alt="profileUseur_picto"/>Profile</Link>
             <Link className={style.navLinks} to="/settings"> <img className={style.navPictos} src={settings} alt="settings_picto"/>Settings</Link>
           </nav>
@@ -100,14 +101,20 @@ export function BasicFront(props) {
 
 
       <div className={style.rightContainer}>
+
         <div className={style.rightContainerTags}>
           <h2 className={style.h2Tags}>Most popular <span className={style.spanTags}>Tags</span></h2>
-            <div className={style.topTagsContainer}></div>
-            <div className={style.filterTagsContainer}></div>
+          <img src={wipPicto} alt="wip_img"/>
         </div>
+
+        <div className={style.botsideContainer}>
         <div className={style.stickyUpArrowdiv} onClick={scrollToTop}>
               <img src={upArrow} alt="upArrow_picto"/>
+      
         </div>
+        <p>Ironhack 88_wdft_sao_oct_2022 Final Project, done by André Da Costa Pinto & Vitor Moraes.</p>
+        </div>
+        
       </div>
     </div>
   )

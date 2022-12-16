@@ -10,22 +10,36 @@
 }
 
 .cardContainer:hover{
-    background-color: rgba(51, 51, 51, 0.575);
+    background-color: rgba(36, 36, 36, 0.384);
 }
 
-.cardImgBanner{
-    background-color: rgb(87, 80, 71);
-    height: 45%;
+.cardImgBannerContainer{
+    height: 170px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
 
 .cardLikesPicto {
     width: 20px;
-    padding-top: 3px;
+    margin-top: 3px;
+}
+
+.cardTitle {
+    text-decoration: none;
+    color: var(--light);
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.cardTitle:hover {
+    color: var(--colory1);
 }
 
 .cardInfosContainer {
@@ -33,8 +47,8 @@
     justify-content: space-between;
 }
 
-.cardInfosUserFakeImg {
-    background-color: blue;
+.cardInfosUserImg {
+    background-color: dark;
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -49,9 +63,23 @@
     gap: 10px;
 }
 
+.cardInfosDate {
+    align-self: center;
+    margin-top: 3px;
+    font-size: 0.9rem;
+}
+
 .cardUsernameCreator {
-    font-weight: 600;
-    align-self:flex-end;
+    margin-top: 3px;
+    text-decoration: none;
+    color: var(--light);
+    cursor: pointer;
+    font-size: 1rem;
+
+}
+
+.cardUsernameCreator:hover {
+    color: var(--colory1);
 }
 
 .cardInfosLikes{
@@ -59,11 +87,21 @@
     justify-content: center;
     align-items: center;
     gap:7px;
-    margin: 10px;
+    margin: 10px 10px;
+    
 }
 
 .cardLikesCount{
     font-weight: 600;
     font-size: 1.3rem;
     align-self: flex-end;
+}
+
+.cardTags {
+    background-color: var(--primary2);
+    width: 7em;
+    padding: 1%;
+    text-align: center;
+    border-radius: 5px;
+    margin: 10px;
 }

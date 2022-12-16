@@ -1,0 +1,167 @@
+.containerStickyNav {
+    background-color: rgba(0, 0, 0, 0.63);
+    width: 100%;
+    height: 50px;
+    position: sticky;
+    top:0;
+    backdrop-filter: blur(8px);
+    display: flex;
+
+}
+.stickyPictoNavProfile {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--colory1);
+    margin: auto 0 auto 20px;
+}
+
+.profileCard {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.63);
+    display: flex;
+    flex-direction: column;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    box-shadow: var(--shadowBox1);
+
+}
+
+.profileCard img{
+    width: 170px;
+    height: 170px;
+    margin-left: 20px;
+    border-radius: 7px;
+    box-shadow: var(--shadowBox1);
+}
+
+.profileCardContent {
+ display: flex;
+ gap: 2em;
+
+}
+
+.profileCardInfos {
+    align-self: center;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+
+.profileCardHr{
+    width: auto;
+    margin: 25px 20px 25px 20px;
+    border: none;
+    box-shadow: var(--shadowBox1);
+}
+
+/* car section */
+
+.cardContainer {
+    width: 600px;
+    height: 300px;
+    border-radius: 8px;
+    box-shadow: var(--shadowBox1);
+    background-color: var(--primary3);
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.cardContainer:hover{
+    background-color: rgba(36, 36, 36, 0.384);
+}
+
+.cardImgBannerContainer{
+    height: 170px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.cardLikesPicto {
+    width: 20px;
+    margin-top: 3px;
+}
+
+.cardTitle {
+    text-decoration: none;
+    color: var(--light);
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.cardTitle:hover {
+    color: var(--colory1);
+}
+
+.cardInfosContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardInfosUserImg {
+    background-color: dark;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: var(--shadowBox1);
+}
+
+.cardInfosUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    gap: 10px;
+}
+
+.cardInfosDate {
+    align-self: center;
+    margin-top: 3px;
+    font-size: 0.9rem;
+}
+
+.cardUsernameCreator {
+    margin-top: 3px;
+    text-decoration: none;
+    color: var(--light);
+    cursor: pointer;
+    font-size: 1rem;
+
+}
+
+.cardUsernameCreator:hover {
+    color: var(--colory1);
+}
+
+.cardInfosLikes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:7px;
+    margin: 10px 10px;
+    
+}
+
+.cardLikesCount{
+    font-weight: 600;
+    font-size: 1.3rem;
+    align-self: flex-end;
+}
+
+.cardTags {
+    background-color: var(--primary2);
+    width: 7em;
+    padding: 1%;
+    text-align: center;
+    border-radius: 5px;
+    margin: 10px;
+}

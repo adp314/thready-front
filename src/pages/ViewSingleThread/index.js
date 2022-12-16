@@ -30,19 +30,22 @@ export function ViewSingleThread() {
  
         getThread();
         console.log(thread);
-    }, []); 
+    }, []);
+
+    
 
     return (
         <>
         { thread.title === '' ?   'Loading...': 
             <div>
                 <div>
+                    <img src={thread.banner} alt="banner_img"/>
                     <h1>{thread.creator.userName}</h1>
                     <p>{thread.creator.email}</p>
                 </div>
                 <div>
                     <h2>{thread.title}</h2>
-                    <p>{thread.text}</p>
+                    <p dangerouslySetInnerHTML={{__html: `${thread.text}`}} />
                     <p>{thread.likes}</p>
                     <div>
                         {                       
