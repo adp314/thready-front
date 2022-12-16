@@ -15,9 +15,7 @@ export function Profile() {
     async function fetchUser() {
       try {
         const response = await api.get("/user/profile");
-        // console.log(response);
         setUser(response.data);
-        console.log(user);
       }
       catch (err) {
         console.log(err);
@@ -25,6 +23,15 @@ export function Profile() {
     }
     fetchUser();
   }, []);
+
+  async function deleteThread(id){
+    try {
+      await api.delete(`./thread/delete/${id}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
     return (
 
@@ -54,6 +61,7 @@ export function Profile() {
   
           {user.threadsCreated ? 
             user.threadsCreated.map(element => {
+
               return  <>
               <div key={element._id} className={style.cardContainer}>
             <div className={style.cardImgBannerContainer} style={{backgroundImage: `url(${element.banner})`}}>
@@ -88,6 +96,7 @@ export function Profile() {
                      
           </>
         })
+
                               : 'Loading...'}
         </>
       }/>
